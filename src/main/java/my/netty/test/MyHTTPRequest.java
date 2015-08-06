@@ -93,9 +93,15 @@ public class MyHTTPRequest {
         return type;
     }
 
+    private float getSecfromReqTime(long reqTime) {
+        return reqTime / 1000F;
+    }
 
-    public float getBytePerSec() {
-        return (this.reqTime > 0)?(((this.sentBytes + this.recBytes) / this.reqTime) / 1000F):(this.sentBytes + this.recBytes);
+
+    public long getBytePerSec() {
+        return (getSecfromReqTime(this.reqTime) > 0)
+                ?((long)((this.sentBytes + this.recBytes) / getSecfromReqTime(this.reqTime)))
+                :(this.sentBytes + this.recBytes);
     }
 
 //    Formatting data for better visual

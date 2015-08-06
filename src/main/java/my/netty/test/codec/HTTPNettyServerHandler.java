@@ -139,8 +139,6 @@ public class HTTPNettyServerHandler extends ChannelInboundHandlerAdapter{
             e.printStackTrace();
         }
         request.setReqTime((new Date().getTime() - request.getReqTime()));
-        System.out.println(request.getReqTime());
-        System.out.println(request.getBytePerSec());
         ctx.write(response).addListener(ChannelFutureListener.CLOSE);
     }
 
